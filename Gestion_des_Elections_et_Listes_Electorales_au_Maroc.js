@@ -12,6 +12,7 @@ let stockCandidats = [
 ];
 let stockElecteurs = [];
 
+//commit test
 //Section native functions
     //splice func
 function splice(arr, i) {
