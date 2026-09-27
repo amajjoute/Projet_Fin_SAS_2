@@ -8,13 +8,12 @@ let stockCandidats = [
     { cin: "T321456", nom: "hamid", prenom: "lmahdaoui", partiPolitique: "Indépendant", age: 24, electeurs: ["T73478899", "T33454455"] },
     { cin: "HH2345", nom: "abdilah", prenom: "chi7aja", partiPolitique: "Parti A", age: 20, electeurs: ["T1121", "T321122", "T061123", "T111124", "edezfez", "dezfezg", "sdafezfe"] },
     { cin: "HH3456", nom: "amine", prenom: "Prenom", partiPolitique: "Parti B", age: 20, electeurs: ["HH1131", "HH1132", "HH1133", "HH1134", "HH1135"] },
-    { cin: "HH4567", nom: "nom", prenom: "Prenom", partiPolitique: "Parti C", age: 20, electeurs: ["HH1141", "HH1142", "HH1143", "HH1144"] }
+    { cin: "HH4567", nom: "nom", prenom: "Prenom", partiPolitique: "Parti C", age: 20, electeurs: ["HH1141", "HH1142", "HH1143", "HH1144"] },
+    { cin: "T393456", nom: "houssam", prenom: "rayan", partiPolitique: "Parti A", age: 25, electeurs: ["T7787899", "T3347455"] }
 ];
 let stockElecteurs = [];
 
-//commit test
-//Section native functions
-    //splice func
+//splice func
 function splice(arr, i) {
     for (i; i < arr.length; i++) {
         arr[i] = arr[i + 1];
@@ -252,11 +251,10 @@ function nombreTotalElection() {
 
     for (let i = 0; i < stockCandidats.length; i++) {
         for (let j = 0; j < stockCandidats[i].electeurs.length; j++) {
-                count++;
-                console.log(count)
+                count++;        
         }
     }
-    
+    console.log(`Le nombre total de vote exprime: ${count}.`)
 }
 
     //Afficher le Top 3 des candidats ayant le plus de votes func
@@ -272,8 +270,7 @@ function top3() {
             }
         }
     }
-    
-   
+     
     if (stockCandidats.length > 0) {
         console.log(`Le Top 1 c'est: ${stockCandidats[0].nom} ${stockCandidats[0].prenom}`)
     } if (stockCandidats.length > 1) {
@@ -284,19 +281,47 @@ function top3() {
         console.log("Aucun candidat enregistrer.");
     }
 }
+
     //Afficher le nombre de candidats par parti politique
 function numCandidatPartPolitique() {
-    let handle = 0;
-    let askPartiPolitiqueCandidat = prompt("Entrer la parti politique pour voir tous les candidat dans ce parti: ")
+    let count = 0;
+    let askPartiPolitiqueCandidat = prompt("Entrer la parti politique pour voir combien de candidats dans ce parti: ")
     for (let i = 0; i < stockCandidats.length; i++) {
         if (askPartiPolitiqueCandidat === stockCandidats[i].partiPolitique) {
-            handle += stockCandidats.length;
+            count++;
         }
     }
-    console.log(`${handle}`);
+    console.log(`Il ya ${count} candidat dans cette parti.`);
 }
 
+    //Main func
+function statistiquesElection() {
+    console.log(`
+    Entrer 1 pour: Afficher le nombre total de candidats.
+    Entrer 2 pour: Afficher le nombre total de votes exprimés dans toute l'élection.
+    Entrer 3 pour: Afficher le Top 3 des candidats ayant le plus de votes.
+    Entrer 4 pour: Afficher le nombre de candidats par parti politique.
+    ========================================================================================================================================`);
+    let chooseOp = parseInt(prompt(": "))
 
-numCandidatPartPolitique()
-// rechercheCandidats();
+    switch (chooseOp) {
+        case 1:
+            afficheTotalCandidats();
+            break;
+        case 2:
+            nombreTotalElection();
+            break;
+        case 3:
+            top3();
+            break;
+        case 4:
+            numCandidatPartPolitique();
+            break;
+        default:
+            console.log("Entrer une valid option.");
+    }
+}
+
+statistiquesElection();
+
 // console.log(stockCandidats);
