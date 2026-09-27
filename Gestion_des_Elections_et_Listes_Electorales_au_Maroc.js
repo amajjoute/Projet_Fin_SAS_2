@@ -186,6 +186,7 @@ function voter() {
         console.log("============================================================================");
         console.log("");
 
+        let checkFind = true;
         for (let i = 0; i < stockCandidats.length; i++) {
             if (candidatCin === stockCandidats[i].cin) {
                 stockCandidats[i].electeurs[stockCandidats[i].electeurs.length] = electeurCin;
@@ -193,18 +194,18 @@ function voter() {
                 console.log(`Vote enregistré pour: ${stockCandidats[i].nom} ${stockCandidats[i].prenom}`);
                 console.log("============================================================================");
                 console.log("");
-                break;
+                checkFind = false;
             }
-            else {
+            
+        }
+        if (checkFind) {
                 console.log("============================================================================");
                 console.log("Ce Candidat n'est pas enregistrer dans la list veiller entrer une nouvelle Cin disponible.");
                 console.log("============================================================================");
                 console.log("");
-                break;
             }
         }
     }
-}
 
 //[5]. Modifier les informations d'un candidat
     //Modifier le parti politique d'un candidat.
